@@ -1,0 +1,656 @@
+{
+	"info": {
+		"_postman_id": "6c44083b-f609-4ac1-a086-2e0a3f0efc90",
+		"name": "node图书管理系统",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "注册用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "yanlifei",
+									"description": "用户名",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "yanlifei",
+									"description": "密码",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "testmodify",
+									"description": "邮箱",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "rights",
+									"value": "administer",
+									"description": "用户权限",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查找所有用户信息",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/findAllUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"findAllUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据用户或者邮箱查找数据",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "username",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/findUserByUsernameOrEmail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"findUserByUsernameOrEmail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改用户信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmZmFiYmMzOS04NGZkLTQ5YzktYTlkOC0xZjUwY2RkYTE5NmEiLCJ1c2VyTmFtZSI6InRlc3Rtb2RpZnkiLCJlbWFpbCI6InVuZGVmaW5lZCIsInJpZ2h0cyI6ImFkbWluaXN0ZXIiLCJpYXQiOjE2NjEyNDgxNzEsImV4cCI6MTY2MTMzNDU3MX0.nvCATlrOthpj-391t3DlERkaR0CPyzRtS9AJsoSyKfs",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userName",
+									"value": "testmodify01",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "testmodify01",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "testmodify01",
+									"type": "default"
+								},
+								{
+									"key": "sex",
+									"value": "male",
+									"type": "default"
+								},
+								{
+									"key": "address",
+									"value": "安徽安庆",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/modifyUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"modifyUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "账户",
+			"item": [
+				{
+					"name": "账户充值和消费",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmZmFiYmMzOS04NGZkLTQ5YzktYTlkOC0xZjUwY2RkYTE5NmEiLCJ1c2VyTmFtZSI6InRlc3Rtb2RpZnkwMSIsImVtYWlsIjoidGVzdG1vZGlmeTAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTI1NzYxMywiZXhwIjoxNjYxMzQ0MDEzfQ.qDuaSKOXKX-rSMkvIX_aKPK_1Zlp7Nz6zbhJUHXM0lc",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "rechargeAmount",
+									"value": "110",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/recharge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"recharge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取所有用户余额之和",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTIzMzk5MSwiZXhwIjoxNjYxMzIwMzkxfQ.8H-VnFjOgACCNerhxqxa16AlfgfjrpnQjpt2fM0W5L4",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/getTotalAssets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getTotalAssets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取充值/消费数据",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTIzMzk5MSwiZXhwIjoxNjYxMzIwMzkxfQ.8H-VnFjOgACCNerhxqxa16AlfgfjrpnQjpt2fM0W5L4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3001/getAllRecharge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getAllRecharge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取用户充值/消费信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI3ZjRmYTc1Yi1jMjIzLTQ5NTctOWU5OC02ZTVjNmFlYTVlMjEiLCJ1c2VyTmFtZSI6InVzZXJuYW1lIiwiZW1haWwiOiJlbWFpbCIsInJpZ2h0cyI6ImFkbWluaXN0ZXIiLCJpYXQiOjE2NjEyMzQ2NDYsImV4cCI6MTY2MTMyMTA0Nn0.A8626H7i3jJzLFfzGgJ1EzOJMNehdsbNNinm42cx3nk",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3001/getSelfRecharge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getSelfRecharge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取个人资产余额",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI3ZjRmYTc1Yi1jMjIzLTQ5NTctOWU5OC02ZTVjNmFlYTVlMjEiLCJ1c2VyTmFtZSI6InVzZXJuYW1lIiwiZW1haWwiOiJlbWFpbCIsInJpZ2h0cyI6ImFkbWluaXN0ZXIiLCJpYXQiOjE2NjEyMzQ2NDYsImV4cCI6MTY2MTMyMTA0Nn0.A8626H7i3jJzLFfzGgJ1EzOJMNehdsbNNinm42cx3nk",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3001/getSelfAssets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getSelfAssets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "公告",
+			"item": [
+				{
+					"name": "发布公告",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "我自己的图书馆开业啦！",
+									"type": "default"
+								},
+								{
+									"key": "content",
+									"value": "最新优惠，消费满100可打八折！",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/publish",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"publish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查看全部公告",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTI2MDQxOCwiZXhwIjoxNjYxMzQ2ODE4fQ.EBAf4_APIRZOAheHtvJxfSHZm_DyTODKcx6fMNcBOl4",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3001/getAllNotice",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getAllNotice"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "图书",
+			"item": [
+				{
+					"name": "查看所有图书信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwYmY2ODEwZC0xYTNmLTRkNzYtYTA3MC1hYzExNGNjZTRmODIiLCJ1c2VyTmFtZSI6InlhbmxpZmVpIiwiZW1haWwiOiJ1bmRlZmluZWQiLCJyaWdodHMiOiJhZG1pbmlzdGVyIiwiaWF0IjoxNjYxMzE1Mjc3LCJleHAiOjE2NjE0MDE2Nzd9.2cuMYivxM59JRRVKwUlGph-elLMfGWTZCT4UGfI8VJI",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3001/getAllBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"getAllBook"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "上架新书",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwYmY2ODEwZC0xYTNmLTRkNzYtYTA3MC1hYzExNGNjZTRmODIiLCJ1c2VyTmFtZSI6InlhbmxpZmVpIiwiZW1haWwiOiJ1bmRlZmluZWQiLCJyaWdodHMiOiJhZG1pbmlzdGVyIiwiaWF0IjoxNjYxMzE1Mjc3LCJleHAiOjE2NjE0MDE2Nzd9.2cuMYivxM59JRRVKwUlGph-elLMfGWTZCT4UGfI8VJI",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "bookCover",
+									"description": "文件",
+									"type": "file",
+									"src": "/C:/Users/27843/Pictures/v2-c08c7904970358dd17289dcc07f38c8f_r.jpg"
+								},
+								{
+									"key": "bookName",
+									"value": "结衣",
+									"description": "书名",
+									"type": "default"
+								},
+								{
+									"key": "surplus",
+									"value": "1",
+									"description": "剩余数量",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "50000",
+									"description": "价格",
+									"type": "default"
+								},
+								{
+									"key": "borrowPrice",
+									"value": "5000",
+									"description": "借书价格/天",
+									"type": "default"
+								},
+								{
+									"key": "author",
+									"value": "新垣结衣",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/addBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"addBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据书名作者出版社查看新书",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwYmY2ODEwZC0xYTNmLTRkNzYtYTA3MC1hYzExNGNjZTRmODIiLCJ1c2VyTmFtZSI6InlhbmxpZmVpIiwiZW1haWwiOiJ1bmRlZmluZWQiLCJyaWdodHMiOiJhZG1pbmlzdGVyIiwiaWF0IjoxNjYxNDEwNTE2LCJleHAiOjE2NjE0OTY5MTZ9.2oDiog-NoaHmPSZAU9bFWlwK8UzY0c8lZH4K8hc89aw",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bookName",
+									"value": "三",
+									"description": "书名",
+									"type": "default"
+								},
+								{
+									"key": "author",
+									"value": "吴",
+									"description": "作者",
+									"type": "default"
+								},
+								{
+									"key": "publisher",
+									"value": "undefined",
+									"description": "出版社",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/findBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"findBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "借书",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTY5ODA2MCwiZXhwIjoxNjYxNzg0NDYwfQ.pFAbvkSlBn9qNyPtFHrnDJ0P365Y55HPADuTA3TrvqY",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bookID",
+									"value": "uuid03",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/borrowBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"borrowBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "还书",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwYmY2ODEwZC0xYTNmLTRkNzYtYTA3MC1hYzExNGNjZTRmODIiLCJ1c2VyTmFtZSI6InlhbmxpZmVpIiwiZW1haWwiOiJ1bmRlZmluZWQiLCJyaWdodHMiOiJhZG1pbmlzdGVyIiwiaWF0IjoxNjYxOTQ1NTc3LCJleHAiOjE2NjIwMzE5Nzd9.DL8srXV3R2czqwtKyeUqOOZv9r-usIJlNVYvAOPAMeQ",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bookID",
+									"value": "uuid03",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/returnBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"returnBook"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
