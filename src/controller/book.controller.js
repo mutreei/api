@@ -8,7 +8,9 @@ const {
     addBook,
     borrowBook,
     findBook,
-    returnBook
+    returnBook,
+    buyBook,
+    findBorrow
 } = require('../service/book.service');
 
 /**
@@ -117,5 +119,28 @@ bookRouter.post('/returnBook', passport.authenticate('jwt', { session: false }),
     })
 })
 
+/**
+ * 买书
+ * token:userid
+ * params: bookid
+ */
+bookRouter.post('/buyBook', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { userID, userName } = req.user;
+    const { bookID } = req.body;
+    buyBook({ userID, bookID, userName }, data => {
+        res.send(data);
+    });
+})
+
+/**
+ * 查看借阅书籍
+ * token:userid
+ */
+bookRouter.post('/findBorrow', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { userID } = req.user;
+    findBorrow(userID, data => {
+        res.send(data);
+    })
+})
 
 module.exports = bookRouter;

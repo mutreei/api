@@ -216,7 +216,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmZmFiYmMzOS04NGZkLTQ5YzktYTlkOC0xZjUwY2RkYTE5NmEiLCJ1c2VyTmFtZSI6InRlc3Rtb2RpZnkwMSIsImVtYWlsIjoidGVzdG1vZGlmeTAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY2MTI1NzYxMywiZXhwIjoxNjYxMzQ0MDEzfQ.qDuaSKOXKX-rSMkvIX_aKPK_1Zlp7Nz6zbhJUHXM0lc",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI4OGQ0OTk4YS04MDM2LTQ3M2MtOTM3Zi00ZGFjYTg4ZjNkZTMiLCJ1c2VyTmFtZSI6InJlYWRlciIsImVtYWlsIjoiZW1haWwwMiIsInJpZ2h0cyI6InJlYWRlciIsImlhdCI6MTY3MzY4NzIzOSwiZXhwIjoxNjczNzczNjM5fQ.tqz9PtqnAysG4eFBJildldIcHfsXS29QHn37z8J9veU",
 								"type": "default"
 							}
 						],
@@ -225,7 +225,7 @@
 							"urlencoded": [
 								{
 									"key": "rechargeAmount",
-									"value": "110",
+									"value": "-50",
 									"type": "default"
 								}
 							]
@@ -645,6 +645,70 @@
 							"port": "3001",
 							"path": [
 								"returnBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "买书",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI4OGQ0OTk4YS04MDM2LTQ3M2MtOTM3Zi00ZGFjYTg4ZjNkZTMiLCJ1c2VyTmFtZSI6InJlYWRlciIsImVtYWlsIjoiZW1haWwwMiIsInJpZ2h0cyI6InJlYWRlciIsImlhdCI6MTY3Mzg3MTU5NiwiZXhwIjoxNjczOTU3OTk2fQ.cq8PmbnV4yD58ka50RnfW-RBSCfl_3e22l-TFhEiZ1o",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bookID",
+									"value": "uuid02",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/buyBook",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"buyBook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查看个人借阅书籍",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI4OGQ0OTk4YS04MDM2LTQ3M2MtOTM3Zi00ZGFjYTg4ZjNkZTMiLCJ1c2VyTmFtZSI6InJlYWRlciIsImVtYWlsIjoiZW1haWwwMiIsInJpZ2h0cyI6InJlYWRlciIsImlhdCI6MTY3Mzg3MTU5NiwiZXhwIjoxNjczOTU3OTk2fQ.cq8PmbnV4yD58ka50RnfW-RBSCfl_3e22l-TFhEiZ1o",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3001/findBorrow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"findBorrow"
 							]
 						}
 					},

@@ -56,7 +56,7 @@ const register = ({ username, password, rights, email }, callback) => {
  * @param {*} callback 
  */
 const findUserByUsernameOrEmail = ({username, email}, callback) => {
-    const sqlStatement = 'SELECT `userID` FROM users WHERE `username`=' + '"' + username + '"' + ' OR `email`=' + '"' + email + '"' + '';
+    const sqlStatement = 'SELECT `userID` FROM users WHERE `username`=' + '"' + username + '"';
     console.log('sqlStatement', sqlStatement);
     connect.query(sqlStatement, (err, res) => {
         if (err)

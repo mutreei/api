@@ -181,7 +181,8 @@ const returnBook = ({ userID, bookID }, callback) => {
                             recharge(userID, consume, username, excuteRes => {
                                 callback({
                                     statusCode: 200,
-                                    msg: '成功还书'
+                                    msg: '成功还书',
+                                    day
                                 })
                             })
                             
@@ -193,11 +194,50 @@ const returnBook = ({ userID, bookID }, callback) => {
     })
 }
 
+/**
+ * 买书模块
+ * books.surplus-1
+ * user.balance-books.price
+ * recharge添加信息
+ * UPDATE `books` SET `surplus` = `surplus` - 1 WHERE `bookid` = 'uuid02'
+ * 
+ */
+const buyBook = ({ userID, bookID, userName }, callback) => {
+    const priceSql = `SELECT \`price\` FROM books WHERE \`bookid\` = '${bookID}'`
+    connect.query(priceSql, (err, data) => {
+        if (err) { throw err }
+        const price = data[0].price;
+        const bookSurplusSql = `UPDATE \`books\` SET \`surplus\` = \`surplus\` - 1 WHERE \`bookid\` = '${bookID}'`;
+        const spendBalanceSql = `UPDATE \`users\` SET \`balance\` = \`balance\` - ${price} WHERE \`userid\` = '${userID}'`
+        const addRechargeSql = `INSERT INTO \`recharge\` VALUES ('${userID}', '${userName}', ${price}*(-1), NOW())`
+        connect.query(`${bookSurplusSql};${spendBalanceSql};${addRechargeSql}`, (err, data) => {
+            if (err) { throw err }
+            callback({
+                statusCode: 200,
+                message: '操作成功',
+                ...data
+            })
+        })
+    })
+}
+
+/**
+ * 查看个人已借阅书籍
+ */
+const findBorrow = (userID, callback) => {
+    const findSql = `SELECT *FROM \`borrow\` WHERE \`userid\` = '${userID}'`;
+    connect.query(findSql, (err, data) => {
+        if (err) { throw err }
+        callback(data);
+    })
+}
 
 module.exports = {
     getAllBook,
     addBook,
     borrowBook,
     findBook,
-    returnBook
+    returnBook,
+    buyBook,
+    findBorrow
 }
