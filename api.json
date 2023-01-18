@@ -533,13 +533,13 @@
 					"response": []
 				},
 				{
-					"name": "根据书名作者出版社查看新书",
+					"name": "根据关键字查看书籍",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIwYmY2ODEwZC0xYTNmLTRkNzYtYTA3MC1hYzExNGNjZTRmODIiLCJ1c2VyTmFtZSI6InlhbmxpZmVpIiwiZW1haWwiOiJ1bmRlZmluZWQiLCJyaWdodHMiOiJhZG1pbmlzdGVyIiwiaWF0IjoxNjYxNDEwNTE2LCJleHAiOjE2NjE0OTY5MTZ9.2oDiog-NoaHmPSZAU9bFWlwK8UzY0c8lZH4K8hc89aw",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI4OGQ0OTk4YS04MDM2LTQ3M2MtOTM3Zi00ZGFjYTg4ZjNkZTMiLCJ1c2VyTmFtZSI6InJlYWRlciIsImVtYWlsIjoiZW1haWwwMiIsInJpZ2h0cyI6InJlYWRlciIsImlhdCI6MTY3NDA0NDYzMSwiZXhwIjoxNjc0MTMxMDMxfQ.nCf86XyQFXWLZct2HVZ8DLJIDYIOUWwosHFMl_M9lXw",
 								"type": "default"
 							}
 						],
@@ -547,21 +547,9 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "bookName",
+									"key": "keyword",
 									"value": "三",
-									"description": "书名",
-									"type": "default"
-								},
-								{
-									"key": "author",
-									"value": "吴",
-									"description": "作者",
-									"type": "default"
-								},
-								{
-									"key": "publisher",
-									"value": "undefined",
-									"description": "出版社",
+									"description": "书名/作者名/出版社",
 									"type": "default"
 								}
 							]
