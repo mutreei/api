@@ -32,9 +32,8 @@ const getAllBook = callback => {
  * @param {*} param0 
  * @param {*} callback 
  */
-const findBook = ({ bookName, author, publisher }, callback) => {
-    console.log('publisher', publisher===null);
-    const sqlStatement = 'SELECT *FROM `books` WHERE `bookName`' + `LIKE '%${bookName}%' OR` + '`author`' + `LIKE '%${author}%' OR` + '`publisher`' + `LIKE '%${publisher}%'`;
+const findBook = ({keyword}, callback) => {
+    const sqlStatement = 'SELECT *FROM `books` WHERE `bookName`' + `LIKE '%${keyword}%' OR` + '`author`' + `LIKE '%${keyword}%' OR` + '`publisher`' + `LIKE '%${keyword}%'`;
     console.log('sqlStatement', sqlStatement);
     connect.query(sqlStatement, (error, data) => {
         if (error) {
