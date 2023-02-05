@@ -351,6 +351,96 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "修改读者信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY3NTU4NDUyMywiZXhwIjoxNjc1NjcwOTIzfQ.xg3WpVphxN4PAOxfNY7Kd4mHDHFbijv756fit3JcY3E",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userID",
+									"value": "0bf6810d-1a3f-4d76-a070-ac114cce4f82",
+									"type": "default"
+								},
+								{
+									"key": "userName",
+									"value": "TEST_MODIFY_READER",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "TEST_MODIFY_EMAIL",
+									"type": "default"
+								},
+								{
+									"key": "sex",
+									"value": "male",
+									"type": "default"
+								},
+								{
+									"key": "address",
+									"value": "TEST_MODIFY_ADDRESS",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/modifyReader",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"modifyReader"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除读者信息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiJmYzE3ZjlhOC1lOGQ3LTQ1YjQtYTFjZC02YjA0OTAwZDBmNTQiLCJ1c2VyTmFtZSI6ImFkbWluIiwiZW1haWwiOiJlbWFpbDAxIiwicmlnaHRzIjoiYWRtaW5pc3RlciIsImlhdCI6MTY3NTU4NDUyMywiZXhwIjoxNjc1NjcwOTIzfQ.xg3WpVphxN4PAOxfNY7Kd4mHDHFbijv756fit3JcY3E",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userID",
+									"value": "0bf6810d-1a3f-4d76-a070-ac114cce4f82",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3001/delUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"delUser"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

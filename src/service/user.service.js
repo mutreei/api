@@ -121,6 +121,23 @@ const modifyUser = (user, callback) => {
 }
 
 /**
+ * 修改读者信息
+ * @param {*} user 
+ * @param {*} callback 
+ */
+const modifyReader = (user, callback) => {
+    const { userID, userName, email, sex, address } = user;
+    const sqlStatement = 'UPDATE `users` SET `userName`=' + `'${userName}'` + ',`email`='+`'${email}'` + ',`sex`=' + `'${sex}'` + ',`address`=' + `'${address}'` + ' WHERE `userID`=' + `'${userID}'`;
+    console.log('sqlStatement', sqlStatement);
+    connect.query(sqlStatement, (error, data) => {
+        if (error) {
+            throw error;
+        }
+        callback(data);
+    })
+}
+
+/**
  * 注销账户
  * @param {*} userID 
  * @param {*} callback 
@@ -140,5 +157,6 @@ module.exports = {
     findUserByUsernameOrEmail,
     login,
     destroyAcount,
-    modifyUser
+    modifyUser,
+    modifyReader
 }

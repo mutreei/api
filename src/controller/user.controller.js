@@ -17,7 +17,8 @@ const {
     findUserByUsernameOrEmail,
     login,
     destroyAcount,
-    modifyUser
+    modifyUser,
+    modifyReader
 } = require('../service/user.service');
 
 /**
@@ -90,16 +91,9 @@ userRouter.post('/modifyUser', passport.authenticate('jwt', { session: false }),
     const { userName, password, email, sex, address } = req.body;
     console.log('password', password);
     const { userID } = req.user;
-    if (sex !== ('male' || 'female')){
-        res.status(400).json({
-            msg: '性别数据错误，只能是male或者female'
-        })
-    }
-    else {
-        modifyUser({ userID, userName, password, email, sex, address }, excuteRes => {
-            res.status(200).json(excuteRes);
-        })
-    }
+    modifyUser({ userID, userName, password, email, sex, address }, excuteRes => {
+        res.status(200).json(excuteRes);
+    })
 })
 
 
@@ -110,6 +104,37 @@ userRouter.post('/destroyAccount', passport.authenticate('jwt', { session: false
     destroyAcount(userID, excuteRes => {
         res.status(200).json(excuteRes);
     })
+})
+
+//销毁他人账号（管理员）
+userRouter.post('/delUser', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const rights = req.user.rights;
+    if (rights === 'administer') {
+        const { userID } = req.body;
+        destroyAcount(userID, excuteRes => {
+            res.status(200).json(excuteRes);
+        })
+    }
+    else {
+        res.status(400).json({
+            message:'无权限'
+        })
+    }
+})
+
+//修改用户信息（管理员）
+userRouter.post('/modifyReader', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const {rights} = req.user;
+    if (rights === 'administer') {
+        modifyReader(req.body, excuteRes => {
+            res.status(200).json(excuteRes);
+        })
+    }
+    else {
+        res.status(400).json({
+            message:'无权限'
+        })
+    }
 })
 
 module.exports = userRouter;
