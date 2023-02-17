@@ -69,6 +69,7 @@ bookRouter.post('/addBook', passport.authenticate('jwt', { session: false }), (r
                 throw error;
             }
             else {
+                console.log('files', files);
                 const oldPath = files.bookCover[0].path;  //这里的bookCover是由于发起请求时form-data的key是bookCover
                 const newPath = uploadDir + '/' + fields.bookName[0] + '.jpeg';
                 fs.renameSync(oldPath, newPath);
